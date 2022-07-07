@@ -2,3 +2,11 @@
     position: absolute;
     top: 50px;
 }
+.headerContainer{
+    width: 100%;
+    max-width: 1024px;
+    margin: 20px 0px 100px 0px;
+}
+.headerContainer.listMode{
+    margin: 20px 0px 10px 0px;
+}

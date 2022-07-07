@@ -14,11 +14,6 @@ const Head = styled.div`
     justify-content: center;
     position: relative;
 `;
-const HeaderContainer = styled.div`
-    width: 100%;
-    max-width: 1024px;
-    margin: 20px 0px 100px 0px;
-`;
 const HeaderList = styled.div`
     display: flex;
     gap: 40px;
@@ -72,6 +67,7 @@ const HeaderSearchItem = styled.div`
 const HeaderSearchText = styled.span`
     color: lightgray;
     cursor: pointer;
+
 `;
 const Input = styled.input`
     border: none;
@@ -86,9 +82,49 @@ const HeaderButton = styled.button`
     cursor: pointer;
 `;
 
+const Options = styled.div`
+    position: absolute;
+    top: 50px;
+    background-color: white;
+    color: gray;
+`;
+const OptionItem = styled.div`
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+`;
+const OptionText = styled.div``;
+const OptionCounterButton = styled.button`
+    width:30px;
+    height: 30px;
+    border: 1px solid #0071c2;
+    color: #0071c2;
+    cursor: pointer;
+    background-color: white;
 
-const Header = () => {
+    &:disabled{
+        cursor: not-allowed;
+    }
+`;
+const OptionCounterNumber = styled.span``;
+const OptionCounter = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: black;
+`;
 
+const Header = ({type}) => {
+
+    const [openOptions, setOpenOptions] = useState(false);
+    const [options, setOptions] = useState({
+        adult: 1,
+        children: 0,
+        room: 1
+
+    })
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([
         {
@@ -99,9 +135,15 @@ const Header = () => {
 
     ])
 
+    const handleOption = (name, operation) => {
+        setOptions(prev => {return {
+            ...prev, [name] : operation === 'i' ? options[name] + 1 : options[name] - 1,
+        }})
+    }
+
   return (
     <Head>
-        <HeaderContainer>
+        <div className={type == 'list' ? 'headerContainer listMode' : 'headerContainer'}>
             <HeaderList>
                 <HeaderListItem>
                     <FontAwesomeIcon icon="fa-solid fa-bed" />
@@ -124,7 +166,8 @@ const Header = () => {
                     <Span>Airport taxis</Span>
                 </HeaderListItem>
             </HeaderList>
-            <HeaderTitle>
+            { type !=='list' &&
+                <> <HeaderTitle>
                 A lifetime of discounts ? It's Genius.
             </HeaderTitle>
             <HeaderDesc>
@@ -149,13 +192,39 @@ const Header = () => {
                     />}
                 </HeaderSearchItem>
                 <HeaderSearchItem>
-                    <HeaderSearchText>2 adults 2 children 1 room</HeaderSearchText>
+                    <HeaderSearchText onClick={() => setOpenOptions(!openOptions)}>{`${options.adult} adult | ${options.children} | ${options.room} room `}</HeaderSearchText>
+                    {openOptions &&  <Options>
+                        <OptionItem>
+                            <OptionText>Adult</OptionText>
+                            <OptionCounter>
+                                <OptionCounterButton disabled={options.adult <= 1} onClick={() => handleOption('adult','d')} >-</OptionCounterButton>
+                                <OptionCounterNumber>{options.adult}</OptionCounterNumber>
+                                <OptionCounterButton onClick={() => handleOption('adult','i')}>+</OptionCounterButton>
+                            </OptionCounter>
+                        </OptionItem>
+                        <OptionItem>
+                            <OptionText>Children</OptionText>
+                            <OptionCounter>
+                                <OptionCounterButton disabled={options.children <= 0} onClick={() => handleOption('children','d')}>-</OptionCounterButton>
+                                <OptionCounterNumber>{options.children}</OptionCounterNumber>
+                                <OptionCounterButton onClick={() => handleOption('children','i')}>+</OptionCounterButton>
+                            </OptionCounter>
+                        </OptionItem>
+                        <OptionItem>
+                            <OptionText>Room</OptionText>
+                            <OptionCounter>
+                                <OptionCounterButton disabled={options.adult <= 1} onClick={() => handleOption('room','d')}>-</OptionCounterButton>
+                                <OptionCounterNumber>{options.room}</OptionCounterNumber>
+                                <OptionCounterButton onClick={() => handleOption('room','i')}>+</OptionCounterButton>
+                            </OptionCounter>
+                        </OptionItem>
+                    </Options>}
                 </HeaderSearchItem>
                 <HeaderSearchItem>
                     <HeaderButton>Search</HeaderButton>
                 </HeaderSearchItem>
-            </HeaderSearch>
-        </HeaderContainer>
+            </HeaderSearch></>}
+        </div>
     </Head>
   )
 }
