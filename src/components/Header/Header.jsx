@@ -87,6 +87,7 @@ const Options = styled.div`
     top: 50px;
     background-color: white;
     color: gray;
+    z-index: 2;
 `;
 const OptionItem = styled.div`
     width: 200px;
