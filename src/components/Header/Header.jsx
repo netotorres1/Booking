@@ -6,6 +6,7 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import './style.css';
 import {format} from 'date-fns';
+import {useNavigate} from 'react-router-dom';
 
 const Head = styled.div`
     background-color: #003580;
@@ -119,6 +120,7 @@ const OptionCounter = styled.div`
 
 const Header = ({type}) => {
 
+    const [destination, setDestination] = useState("");
     const [openOptions, setOpenOptions] = useState(false);
     const [options, setOptions] = useState({
         adult: 1,
@@ -140,6 +142,12 @@ const Header = ({type}) => {
         setOptions(prev => {return {
             ...prev, [name] : operation === 'i' ? options[name] + 1 : options[name] - 1,
         }})
+    }
+
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        navigate('/hotels', {state: {destination, date, options}})
     }
 
   return (
@@ -180,7 +188,7 @@ const Header = ({type}) => {
             </HeaderBtn>
             <HeaderSearch>
                 <HeaderSearchItem>
-                    <Input placeholder='Where are you going?' />
+                    <Input placeholder='Where are you going?' onChange={(e) => setDestination(e.target.value)} />
                 </HeaderSearchItem>
                 <HeaderSearchItem>
                     <HeaderSearchText onClick={() => setOpenDate(!openDate)}>${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(date[0].endDate, 'MM/dd/yyyy')}</HeaderSearchText>
@@ -190,6 +198,7 @@ const Header = ({type}) => {
                         moveRangeOnFirstSelection={false}
                         ranges={date}
                         className='date'
+                        minDate={new Date()}
                     />}
                 </HeaderSearchItem>
                 <HeaderSearchItem>
@@ -221,8 +230,8 @@ const Header = ({type}) => {
                         </OptionItem>
                     </Options>}
                 </HeaderSearchItem>
-                <HeaderSearchItem>
-                    <HeaderButton>Search</HeaderButton>
+                <HeaderSearchItem >
+                    <HeaderButton onClick={handleSearch} >Search</HeaderButton>
                 </HeaderSearchItem>
             </HeaderSearch></>}
         </div>
