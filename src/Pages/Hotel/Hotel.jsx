@@ -4,12 +4,15 @@ import Header from '../../components/Header/Header'
 import Navbar from '../../components/Navbar/Navbar'
 import MailList from '../../components/MailList/MailList'
 import Footer from '../../components/Footer/Footer'
+import { useState } from 'react'
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight, FaWindowClose } from 'react-icons/fa'
 
 const HotelContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 20px;
-  justify-content: center;
+  align-items: center;
 `;
 const HotelWrapper = styled.div`
   width: 100%;
@@ -45,7 +48,7 @@ const HotelImages = styled.div`
 `;
 const HotelImg = styled.img`
   width: 33%;
-  height: 50%;
+  height: 300px;
   justify-content: space-between;
   
 `;
@@ -108,7 +111,36 @@ const BookNow = styled.button`
 
 `;
 
+const Slider = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0071c2;
+  z-index: 999;
+  background-color: rgba(0,0,0,0.426);
+  display: flex;
+  align-items: center;
+
+`;
+const SliderWrapper = styled.div`
+  width: 100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`;
+const SliderImg = styled.img`
+  width: 80%;
+  height: 80vh;
+`;
+
 const Hotel = () => {
+
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [open, setOpen] = useState(false);
 
   const photos = [
     {
@@ -131,11 +163,35 @@ const Hotel = () => {
     },
   ];
 
+  const handleOpen = (i) => {
+    setSlideNumber(i);
+    setOpen(true);
+  }
+  
+  const handleMove = (direction) => {
+    let newSlideNumber;
+    if(direction === 'l'){
+      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+    }else{
+      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+    }
+    setSlideNumber(newSlideNumber);
+  }
+
   return (
     <div>
       <Navbar/>
       <Header type='list' />
       <HotelContainer>
+        {open && 
+          <Slider>
+            <FaWindowClose className='close' onClick={() => setOpen(false)}/>
+            <FaArrowAltCircleLeft className='arrow' onClick={() => handleMove('l')} />
+              <SliderWrapper>
+                <SliderImg src={photos[slideNumber].src} />
+              </SliderWrapper>
+            <FaArrowAltCircleRight className='arrow' onClick={() => handleMove('r')}/>
+          </Slider>}
         <HotelWrapper>
           <BookNow>Reserve or Book Now!</BookNow>
           <HotelTitle>Grand Hotel</HotelTitle>
@@ -145,8 +201,8 @@ const Hotel = () => {
           <HotelDistance>Excelent location - 500m from center</HotelDistance>
             <HotelPriceHightLight>Book a stay over $114 at this property and get a free airport taxi</HotelPriceHightLight>
             <HotelImages>
-              {photos.map((photo) => (
-                <HotelImg src={photo.src} />
+              {photos.map((photo,i) => (
+                <HotelImg onClick={() => handleOpen(i)} src={photo.src} />
               ))}
             </HotelImages>
             <HotelDetails>

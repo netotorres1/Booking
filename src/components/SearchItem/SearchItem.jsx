@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 const SearchItems = styled.div`
     border: 1px solid lightgray;
@@ -128,7 +129,9 @@ const SearchItem = () => {
             <DetailTexts>
                 <SpanPrice>$123</SpanPrice>
                 <SpanTaxOp>Includes taxes and fees</SpanTaxOp>
-                <SearchItemCheckButton>See availabity</SearchItemCheckButton>
+                <SearchItemCheckButton>
+                    <Link to='/hotels/1'>See availabity</Link>
+                </SearchItemCheckButton>
             </DetailTexts>
         </SearchItemDetails>
     </SearchItems>

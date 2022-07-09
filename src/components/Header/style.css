@@ -11,3 +11,17 @@
 .headerContainer.listMode{
     margin: 20px 0px 10px 0px;
 }
+.close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+.arrow{
+    margin: 20px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}

@@ -7,6 +7,7 @@ import 'react-date-range/dist/theme/default.css';
 import './style.css';
 import {format} from 'date-fns';
 import {useNavigate} from 'react-router-dom';
+import { FaBed, FaPlane, Facar, FaTaxi } from 'react-icons/fa'
 
 const Head = styled.div`
     background-color: #003580;
@@ -155,23 +156,23 @@ const Header = ({type}) => {
         <div className={type == 'list' ? 'headerContainer listMode' : 'headerContainer'}>
             <HeaderList>
                 <HeaderListItem>
-                    <FontAwesomeIcon icon="fa-solid fa-bed" />
+                    <FaBed/>
                     <Span>Stays</Span>
                 </HeaderListItem>
                 <HeaderListItem>
-                    <FontAwesomeIcon icon="fa-solid fa-plane" />
+                    <FaPlane/>
                     <Span>Flights</Span>
                 </HeaderListItem>
                 <HeaderListItem>
-                    <FontAwesomeIcon icon="fa-solid fa-car" />
+                    <FaTaxi/>
                     <Span>Car rentals</Span>
                 </HeaderListItem>
                 <HeaderListItem>
-                    <FontAwesomeIcon icon="fa-solid fa-bed" />
+                    <FaBed />
                     <Span>Attractions</Span>
                 </HeaderListItem>
                 <HeaderListItem>
-                    <FontAwesomeIcon icon="fa-solid fa-bed" />
+                    <FaTaxi/>
                     <Span>Airport taxis</Span>
                 </HeaderListItem>
             </HeaderList>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = styled.div`
@@ -31,7 +32,7 @@ const Navbar = () => {
   return (
     <Nav>
         <NavContainer>
-            <Logo>Booking</Logo>
+            <Logo><Link to='/'>Booking</Link></Logo>
             <NavItems>
                 <NavButton>Register</NavButton>
                 <NavButton>Login</NavButton>
