@@ -6,7 +6,7 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import './style.css';
 import {format} from 'date-fns';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import { FaBed, FaPlane, Facar, FaTaxi } from 'react-icons/fa'
 
 const Head = styled.div`
@@ -25,26 +25,17 @@ const HeaderListItem = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
-    &:active{
-        border: 1px solid white;
-        padding: 10px;
-        border-radius: 20px;
-    }
+    padding-bottom: 20px;
+
 `;
-const Span = styled.span``;
+const Span = styled.span`
+    
+`;
 
 const HeaderTitle = styled.h1``;
 const HeaderDesc = styled.p`
     margin: 20px 0px;
 
-`;
-const HeaderBtn = styled.button`
-    background-color: #0071c2;
-    color: white;
-    font-weight: 500;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
 `;
 
 const HeaderSearch = styled.div`
@@ -157,7 +148,7 @@ const Header = ({type}) => {
             <HeaderList>
                 <HeaderListItem>
                     <FaBed/>
-                    <Span>Stays</Span>
+                    <Link style={{color :'white'}} to={'/'}><Span>Stays</Span></Link>
                 </HeaderListItem>
                 <HeaderListItem>
                     <FaPlane/>
@@ -165,7 +156,7 @@ const Header = ({type}) => {
                 </HeaderListItem>
                 <HeaderListItem>
                     <FaTaxi/>
-                    <Span>Car rentals</Span>
+                    <Link style={{color: 'white'}} to={'/carrentals'}><Span>Car rentals</Span></Link>
                 </HeaderListItem>
                 <HeaderListItem>
                     <FaBed />
@@ -184,9 +175,6 @@ const Header = ({type}) => {
                 Get rewarded for your travels - unlock instant savings of 10% or more
                 with free booking account
             </HeaderDesc>
-            <HeaderBtn>
-                Sign in / Register
-            </HeaderBtn>
             <HeaderSearch>
                 <HeaderSearchItem>
                     <Input placeholder='Where are you going?' onChange={(e) => setDestination(e.target.value)} />

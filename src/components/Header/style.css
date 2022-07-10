@@ -1,7 +1,10 @@
 .date{
     position: absolute;
-    top: 50px;
+    bottom: 50px;
+    right: 150px;
     z-index: 2;
+    flex: 1;
+    color: white;
 }
 .headerContainer{
     width: 100%;
