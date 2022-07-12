@@ -1,10 +1,15 @@
 .date{
     position: absolute;
-    bottom: 50px;
+    top: 50px;
     right: 150px;
     z-index: 2;
     flex: 1;
     color: white;
+}
+.datecar{
+    position: absolute;
+    bottom: 80px;
+    right: 150px;
 }
 .headerContainer{
     width: 100%;

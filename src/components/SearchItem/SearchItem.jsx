@@ -130,7 +130,7 @@ const SearchItem = () => {
                 <SpanPrice>$123</SpanPrice>
                 <SpanTaxOp>Includes taxes and fees</SpanTaxOp>
                 <SearchItemCheckButton>
-                    <Link to='/hotels/1'>See availabity</Link>
+                    <Link to='/hotels/1' style={{color: 'white'}}>See availabity</Link>
                 </SearchItemCheckButton>
             </DetailTexts>
         </SearchItemDetails>

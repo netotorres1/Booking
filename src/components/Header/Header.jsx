@@ -160,7 +160,7 @@ const Header = ({type}) => {
                 </HeaderListItem>
                 <HeaderListItem>
                     <FaBed />
-                    <Span>Attractions</Span>
+                    <Link style={{color: 'white'}} to={'/atractions'}><Span>Attractions</Span></Link>
                 </HeaderListItem>
                 <HeaderListItem>
                     <FaTaxi/>

@@ -32,10 +32,10 @@ const Navbar = () => {
   return (
     <Nav>
         <NavContainer>
-            <Logo>Booking.com</Logo>
+            <Link style={{color: 'white'}} to={'/'}><Logo>Booking.com</Logo></Link>
             <NavItems>
-                <NavButton>Register</NavButton>
-                <NavButton>Login</NavButton>
+                <Link to={'/register'}><NavButton>Register</NavButton></Link>
+                <Link to={'/register'}><NavButton>Login</NavButton></Link>
             </NavItems>
         </NavContainer>
     </Nav>

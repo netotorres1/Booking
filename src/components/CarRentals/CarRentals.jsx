@@ -203,7 +203,7 @@ const CarRentals = () => {
                             onChange={(item) => setDate([item.selection])}
                             moveRangeOnFirstSelection={false}
                             ranges={date}
-                            className='date'
+                            className='datecar'
                             minDate={new Date()}
                         />}
                     <CarRentalsButton>Search</CarRentalsButton>
