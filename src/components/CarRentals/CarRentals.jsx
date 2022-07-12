@@ -75,12 +75,6 @@ const CarRentalsButton = styled.button`
     border: none;
 `;
 
-const CRdate = styled.div`
-    padding: 15px;
-    background-color: white;
-    width: 300px;
-`;
-
 const PupularCompanies = styled.div`
     width: 1024px;  
     display: flex;
@@ -164,14 +158,6 @@ const Dlink = styled.a`
 
 const CarRentals = () => {
 
-    const [destination, setDestination] = useState("");
-    const [openOptions, setOpenOptions] = useState(false);
-    const [options, setOptions] = useState({
-        adult: 1,
-        children: 0,
-        room: 1
-
-    })
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([
         {

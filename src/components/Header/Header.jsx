@@ -1,13 +1,12 @@
 import {useState} from 'react';
 import styled from 'styled-components';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import './style.css';
 import {format} from 'date-fns';
 import {useNavigate, Link} from 'react-router-dom';
-import { FaBed, FaPlane, Facar, FaTaxi } from 'react-icons/fa'
+import { FaBed, FaPlane, FaTaxi } from 'react-icons/fa'
 
 const Head = styled.div`
     background-color: #003580;
@@ -144,7 +143,7 @@ const Header = ({type}) => {
 
   return (
     <Head>
-        <div className={type == 'list' ? 'headerContainer listMode' : 'headerContainer'}>
+        <div className={type === 'list' ? 'headerContainer listMode' : 'headerContainer'}>
             <HeaderList>
                 <HeaderListItem>
                     <FaBed/>

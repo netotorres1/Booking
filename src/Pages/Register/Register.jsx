@@ -1,18 +1,7 @@
 import React from 'react'
 import { FaFacebook, FaGoogle, FaPhone } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import Navbar from '../../components/Navbar/Navbar';
-
-const Header = styled.div`
-    height: 70px;
-    background-color:#003580;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    width: max-width;
-
-`;
 
 const ContainerRegister = styled.div`
     width: 350px;
